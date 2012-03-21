@@ -1,0 +1,6 @@
+## Origins 2.0 plugin.yml Configuration.
+## Compiled and configured by Razorcane
+name: Origins
+main: org.razorcane.origins.Origins
+author: Razorcane
+version: 2.0
