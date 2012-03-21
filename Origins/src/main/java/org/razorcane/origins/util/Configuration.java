@@ -76,6 +76,19 @@ public class Configuration {
         }
     }
     
+    public void removeEntry(String key){
+        map.remove(key);
+    }
+    
+    public boolean hasEntry(String key){
+        return map.containsKey(key);
+    }
+    
+    /*
+     * Configuration Set Methods
+     * Used to define configuration variables to be written and read
+     * from the main configuration file.
+     */
     public void setEntry(String key, Object value){
         if(map == null){
             return;
@@ -85,11 +98,102 @@ public class Configuration {
         }
     }
     
-    public void removeEntry(String key){
-        map.remove(key);
+    public void setString(String key, String value){
+        if(map == null){
+            return;
+        }
+        else{
+            map.put(key, value);
+        }
     }
     
-    public boolean hasEntry(String key){
-        return map.containsKey(key);
+    public void setInt(String key, int value){
+        if(map == null){
+            return;
+        }
+        else{
+            map.put(key, value);
+        }
+    }
+    
+    public void setBoolean(String key, boolean value){
+        if(map == null){
+            return;
+        }
+        else{
+            map.put(key, value);
+        }
+    }
+    
+    public void setDouble(String key, double value){
+        if(map == null){
+            return;
+        }
+        else{
+            map.put(key, value);
+        }
+    }
+    
+    /*
+     * Configuration Get Methods
+     * Used to read configuration variables that have been saved in the
+     * main configuration file.
+     */
+    
+    public Object getEntry(String key){
+        if(!map.containsKey(key)){
+            return null;
+        }
+        else{
+            return map.get(key);
+        }
+    }
+    
+    public String getString(String key){
+        if(!map.containsKey(key)){
+            return null;
+        }
+        else if(!(map.get(key) instanceof String)){
+            return null;
+        }
+        else{
+            return map.get(key).toString();
+        }
+    }
+    
+    public int getInt(String key){
+        if(!map.containsKey(key)){
+            return -1;
+        }
+        else if(!(map.get(key) instanceof Integer)){
+            return -1;
+        }
+        else{
+            return ((Integer) map.get(key)).intValue();
+        }
+    }
+    
+    public Boolean getBoolean(String key){
+        if(!map.containsKey(key)){
+            return false;
+        }
+        else if(!(map.get(key) instanceof Boolean)){
+            return false;
+        }
+        else{
+            return ((Boolean) map.get(key)).booleanValue();
+        }
+    }
+    
+    public double getDouble(String key){
+        if(!map.containsKey(key)){
+            return -1;
+        }
+        else if(!(map.get(key) instanceof Double)){
+            return -1;
+        }
+        else{
+            return ((Double) map.get(key)).doubleValue();
+        }
     }
 }
